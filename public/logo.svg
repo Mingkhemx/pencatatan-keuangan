@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="32" fill="#0D7A5F"/>
+  <rect x="2" y="2" width="124" height="124" rx="30" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="4"/>
+
+  <!-- Pocket Ledger / Receipt Sheet -->
+  <path
+    d="M32 30C32 25.5817 35.5817 22 40 22H76L96 42V98C96 102.418 92.4183 106 88 106H40C35.5817 106 32 102.418 32 98V30Z"
+    fill="#F7F5F0"
+  />
+
+  <!-- Folded Corner -->
+  <path d="M76 22L96 42H82C78.6863 42 76 39.3137 76 36V22Z" fill="#D9D3C7"/>
+
+  <!-- Ledger Lines -->
+  <rect x="44" y="54" width="28" height="6" rx="3" fill="#0D7A5F"/>
+  <rect x="44" y="68" width="40" height="6" rx="3" fill="#181A18" fill-opacity="0.18"/>
+  <rect x="44" y="82" width="30" height="6" rx="3" fill="#181A18" fill-opacity="0.18"/>
+
+  <!-- Amber Coin Badge -->
+  <circle cx="88" cy="88" r="20" fill="#F59E0B" stroke="#0D7A5F" stroke-width="5"/>
+  <circle cx="88" cy="88" r="11" stroke="#FFFBEB" stroke-opacity="0.7" stroke-width="2.2"/>
+  <path d="M88 82.5V93.5M83.5 88H92.5" stroke="#181A18" stroke-width="2.8" stroke-linecap="round"/>
+</svg>

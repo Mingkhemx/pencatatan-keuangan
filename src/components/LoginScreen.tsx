@@ -1,14 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ReceiptText, Sparkles, UserCheck } from "lucide-react";
-
-interface ExistingAccount {
-  username: string;
-  display_name: string;
-  avatar_data?: string | null;
-}
+import { ArrowRight, Sparkles } from "lucide-react";
 
 interface LoginScreenProps {
   onLogin: (name: string) => Promise<void>;
@@ -18,22 +12,6 @@ interface LoginScreenProps {
 
 export function LoginScreen({ onLogin, loading, error }: LoginScreenProps) {
   const [name, setName] = useState("");
-  const [accounts, setAccounts] = useState<ExistingAccount[]>([]);
-
-  useEffect(() => {
-    let active = true;
-    fetch("/api/auth/login")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (active && Array.isArray(data?.accounts)) {
-          setAccounts(data.accounts);
-        }
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,14 +30,33 @@ export function LoginScreen({ onLogin, loading, error }: LoginScreenProps) {
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.05, type: "spring", stiffness: 320, damping: 24 }}
-          className="inline-flex items-center gap-2 rounded-full border border-[#181A18]/10 bg-white px-3.5 py-1.5 text-xs font-semibold tracking-wide text-[#0D7A5F] shadow-xs"
+          transition={{
+            delay: 0.05,
+            type: "spring",
+            stiffness: 320,
+            damping: 24,
+          }}
+          className="flex items-center gap-3"
         >
-          <ReceiptText className="h-3.5 w-3.5" />
-          JAJANNOTE • BUKU SAKU
+          <div className="h-12 w-12 overflow-hidden rounded-2xl shadow-xs">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.svg"
+              alt="Logo JajanNote"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div>
+            <span className="inline-block rounded-full bg-[#E7F4F0] px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-[#0D7A5F]">
+              BUKU SAKU DIGITAL
+            </span>
+            <p className="mt-0.5 text-base font-extrabold tracking-tight text-[#181A18]">
+              JajanNote
+            </p>
+          </div>
         </motion.div>
 
-        <h1 className="mt-5 text-[30px] font-extrabold leading-[1.15] tracking-tight text-[#181A18]">
+        <h1 className="mt-6 text-[30px] font-extrabold leading-[1.15] tracking-tight text-[#181A18]">
           Catat jajanmu,
           <br />
           <span className="text-[#0D7A5F]">jaga sisa uangnya.</span>
@@ -121,41 +118,6 @@ export function LoginScreen({ onLogin, loading, error }: LoginScreenProps) {
             </>
           )}
         </motion.button>
-
-        {accounts.length > 0 && (
-          <div className="mt-5 border-t border-[#181A18]/8 pt-4">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#666A65]">
-              <UserCheck className="h-3.5 w-3.5 text-[#0D7A5F]" />
-              Akun Terdaftar
-            </div>
-            <div className="mt-2.5 flex flex-wrap gap-2">
-              {accounts.map((acc) => (
-                <motion.button
-                  key={acc.username}
-                  type="button"
-                  whileTap={{ scale: 0.95 }}
-                  disabled={loading}
-                  onClick={() => onLogin(acc.display_name)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#181A18]/10 bg-[#F7F5F0] px-3 py-1.5 text-xs font-semibold text-[#181A18] transition-colors hover:border-[#0D7A5F]/40 hover:bg-[#E7F4F0]"
-                >
-                  <span className="flex h-4 w-4 items-center justify-center overflow-hidden rounded-full bg-[#0D7A5F] text-[9px] font-bold text-white">
-                    {acc.avatar_data ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={acc.avatar_data}
-                        alt={acc.display_name}
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      acc.display_name.slice(0, 1).toUpperCase()
-                    )}
-                  </span>
-                  {acc.display_name}
-                </motion.button>
-              ))}
-            </div>
-          </div>
-        )}
       </motion.form>
 
       <div className="flex items-center justify-center gap-1.5 pb-2 text-xs text-[#7D817B]">

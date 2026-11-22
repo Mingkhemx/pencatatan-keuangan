@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="public/logo.svg" alt="Logo JajanNote" width="88" />
+
 # JajanNote
 
 **Catatan Pengeluaran Harian & Leaderboard Hemat**
@@ -52,7 +54,7 @@ Aplikasi web pencatatan pengeluaran jajan harian berdesain **mobile-only respons
 
 ## Fitur Utama
 
-- **Login Simpel Berbasis Nama** — Masuk atau buat akun baru cukup menggunakan nama panggilan, lengkap dengan daftar akun terdaftar untuk berpindah akun dalam satu ketukan.
+- **Login Simpel Berbasis Nama** — Masuk atau buat akun baru cukup menggunakan nama panggilan tanpa kata sandi yang rumit.
 - **Foto Profil Kustom** — Lingkaran profil di header dapat ditekan untuk mengunggah, mengganti, atau menghapus foto profil (tersimpan di database dan tampil di leaderboard).
 - **CRUD Pengeluaran Lengkap** — Tambah, edit, dan hapus catatan transaksi dengan kolom **Nomor Transaksi**, **Tanggal Beli**, **Keterangan**, **Harga (IDR)**, serta metode pembayaran **QRIS** atau **Cash**.
 - **Upload & Download Bukti Pembayaran** — Mendukung unggah foto bukti QRIS/Cash (terkompresi otomatis) dan fitur **Unduh** foto bukti langsung atau kartu bukti pembayaran QRIS/Cash berformat PNG.
