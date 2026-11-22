@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  overscroll-behavior-y: contain;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-grid {
+  background-color: #e6e1d8;
+  background-image: radial-gradient(rgba(24, 26, 24, 0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Custom subtle scrollbar for mobile shell */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(24, 26, 24, 0.16);
+  border-radius: 9999px;
+}
